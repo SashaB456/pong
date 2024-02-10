@@ -5,22 +5,39 @@
         Ellipse:
             size: self.size
             pos: self.pos
+<PongPaddle>:
+    size: 25, 200
+    canvas:
+        Rectangle:
+            size: self.size
+            pos: self.pos
 <PongGame>:
     ball: pong_ball
+    player1: paddle_left
+    player2: paddle_right
     canvas:
         Rectangle:
             size: 10, self.height
             pos: self.center_x-5, 0 
     Label:
-        text: "0"
+        text: str(root.player1.score)
         font_size: 70
         top: root.height - 50
         center_x: root.width/4
     Label:
-        text: "0"
+        text: str(root.player2.score)
         font_size: 70
         top: root.height - 50
         center_x: root.width*3/4
     PongBall:
         center: root.center
         id: pong_ball
+    PongPaddle:
+        x: root.x
+        id: paddle_left
+        center_y: root.center_y
+    PongPaddle:
+        x: root.right - self.width
+        id: paddle_right
+        center_y: root.center_y
+    
